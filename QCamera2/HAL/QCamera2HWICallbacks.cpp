@@ -2874,7 +2874,7 @@ void QCamera2HardwareInterface::dumpFrameToFile(QCameraStream *stream,
                         }
 
                         LOGH("written number of bytes %ld\n",
-                             written_len);
+                             (long)written_len);
                         close(file_fd);
                     } else {
                         LOGE("fail to open file for image dumping");
@@ -3276,7 +3276,7 @@ void * QCameraCbNotifier::cbNotifyRoutine(void * data)
                                     }
                                     if (pme->mJpegCb) {
                                         LOGI("Calling JPEG Callback!! for camera %d"
-                                                "release_data %p",
+                                                "release_data %p"
                                                 "frame_idx %d",
                                                  pme->mParent->getCameraId(),
                                                 cb->user_data,

@@ -9973,7 +9973,7 @@ int32_t QCameraParameters::getStreamFormat(cam_stream_type_t streamType,
         } else {
             if (analysisInfo.hw_analysis_supported) {
                 LOGW("Invalid analysis_format %d\n",
-                        analysisInfo.analysis_format);
+                        __func__, analysisInfo.analysis_format);
             }
             format = mAppPreviewFormat;
         }
@@ -11899,7 +11899,7 @@ int32_t QCameraParameters::bundleRelatedCameras(bool sync,
         rc = m_pCamOpsTbl->ops->sync_related_sensors(
                 m_pCamOpsTbl->camera_handle, m_pRelCamSyncBuf);
     } else {
-        LOGE("Related Cam SyncBuffer not allocated", rc);
+        LOGE("Related Cam SyncBuffer not allocated" rc=%d, rc);
         return NO_INIT;
     }
 

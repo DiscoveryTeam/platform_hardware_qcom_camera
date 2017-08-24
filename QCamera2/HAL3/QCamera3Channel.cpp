@@ -40,6 +40,7 @@
 #include "gralloc.h"
 
 // Camera dependencies
+#include <sys/stat.h>
 #include "QCamera3Channel.h"
 #include "QCamera3HWI.h"
 #include "QCameraTrace.h"
@@ -566,7 +567,7 @@ void QCamera3Channel::dumpYUV(mm_camera_buf_def_t *frame, cam_dimension_t dim,
                             index += (uint32_t)offset.mp[i].stride;
                         }
                     }
-                    LOGH("written number of bytes %ld\n", written_len);
+                    LOGH("written number of bytes %ld\n", (long)written_len);
                     mDumpFrmCnt++;
                     close(file_fd);
                 } else {

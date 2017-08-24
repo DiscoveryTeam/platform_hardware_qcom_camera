@@ -3069,7 +3069,7 @@ QCameraHeapMemory *QCamera2HardwareInterface::allocateStreamInfoBuf(
             mParameters.getHfrFps(pFpsRange);
             streamInfo->user_buf_info.frameInterval =
                     (long)((1000/pFpsRange.video_max_fps) * 1000);
-            LOGH("Video Batch Count = %d, interval = %d",
+            LOGH("Video Batch Count = %d, interval = %ld",
                     streamInfo->user_buf_info.frame_buf_cnt,
                     streamInfo->user_buf_info.frameInterval);
         }
@@ -9752,7 +9752,7 @@ void *QCamera2HardwareInterface::deferredWorkRoutine(void *obj)
                                 CAM_SYNC_RELATED_SENSORS_ON) {
                             rc = pme->mParameters.getRelatedCamCalibration(
                                 &(pme->mJpegMetadata.otp_calibration_data));
-                            LOGD("Dumping Calibration Data Version Id %f rc %d",
+                            LOGD("Dumping Calibration Data Version Id %d rc %d",
                                     pme->mJpegMetadata.otp_calibration_data.calibration_format_version,
                                     rc);
                             if (rc != 0) {
@@ -9984,7 +9984,7 @@ int32_t QCamera2HardwareInterface::getJpegHandleInfo(mm_jpeg_ops_t *ops,
         memcpy(ops, &mJpegHandle, sizeof(mm_jpeg_ops_t));
         memcpy(mpo_ops, &mJpegMpoHandle, sizeof(mm_jpeg_mpo_ops_t));
         *pJpegClientHandle = mJpegClientHandle;
-        LOGH("Getting JPEG client handle %d",
+        LOGH("Getting JPEG client handle %p",
                 pJpegClientHandle);
         return NO_ERROR;
     } else {

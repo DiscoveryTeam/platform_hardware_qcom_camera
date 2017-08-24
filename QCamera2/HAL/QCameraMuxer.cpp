@@ -1721,7 +1721,7 @@ int QCameraMuxer::close_camera_device(hw_device_t *hw_dev)
         CHECK_CAMERA_ERROR(pCam);
 
         hw_device_t *dev = (hw_device_t*)(pCam->dev);
-        LOGH("hw device %x, hw %x", dev, pCam->hwi);
+        LOGH("hw device %p, hw %p", dev, pCam->hwi);
 
         rc = QCamera2HardwareInterface::close_camera_device(dev);
         if (rc != NO_ERROR) {
@@ -2156,7 +2156,7 @@ int QCameraMuxer::cameraDeviceOpen(int camera_id,
             m_pPhyCamera[phyId].dev = reinterpret_cast<camera_device_t*>(hw_dev[i]);
             m_pPhyCamera[phyId].hwi = hw;
             cam->sId[i] = m_pPhyCamera[phyId].camera_server_id;
-            LOGH("camera id %d server id : %d hw device %x, hw %x",
+            LOGH("camera id %d server id : %d hw device %p, hw %p",
                      phyId, cam->sId[i], hw_dev[i], hw);
         }
     } else {
